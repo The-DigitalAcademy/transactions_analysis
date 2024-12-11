@@ -40,3 +40,11 @@ COPY transactions(
 FROM '/Users/tshmacm1166/Desktop/sql_sprint/transactions.csv'
 DELIMITER ','
 CSV HEADER;
+
+COPY employment_status(
+   employee_status_code,
+   employee_status_desc
+)
+FROM '/Users/tshmacm1166/Desktop/sql_sprint/employment_status.csv'
+DELIMITER ','
+CSV HEADER;
