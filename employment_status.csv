@@ -1,0 +1,5 @@
+employee_status_code,employee_status_desc
+0,Resigned
+3,Active
+1,Inactive
+2,Retiree
