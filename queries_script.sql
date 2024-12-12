@@ -16,13 +16,13 @@
 
 
 -- Question 3
-SELECT
-    EXTRACT(YEAR FROM record_date) AS transaction_year,
-    EXTRACT(MONTH FROM record_date) AS transaction_month,
-    COUNT(customer_identifier) AS transaction_count, ROUND(SUM(amt)) as total_amount
-FROM transactions
-GROUP BY transaction_year, transaction_month
-ORDER BY transaction_year, transaction_month;
+-- SELECT
+--     EXTRACT(YEAR FROM record_date) AS transaction_year,
+--     EXTRACT(MONTH FROM record_date) AS transaction_month,
+--     COUNT(customer_identifier) AS transaction_count, ROUND(AVG(account_balance)) as avg_balance
+-- FROM transactions
+-- GROUP BY transaction_year, transaction_month
+-- ORDER BY transaction_year, transaction_month;
 
 
 
