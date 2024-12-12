@@ -56,12 +56,12 @@
 
 
 -- Question 6
--- SELECT i.income_group_desc, AVG(t.amt) AS avg_investment_transaction
--- FROM transactions t
--- JOIN customers c ON t.customer_identifier = c.customer_identifier
--- JOIN income_group i ON c.income_group_code = i.income_group_code
--- WHERE t.transaction_description LIKE '%INVESTMENT%'
--- GROUP BY i.income_group_desc;
+SELECT i.income_group_desc, AVG(t.amt) AS avg_investment_transaction
+FROM transactions t
+JOIN customers c ON t.customer_identifier = c.customer_identifier
+JOIN income_group i ON c.income_group_code = i.income_group_code
+WHERE t.transaction_description LIKE '%INVESTMENT%'
+GROUP BY i.income_group_code;
 
 
 -- Question 7
