@@ -16,12 +16,6 @@
 
 
 -- Question 3
--- SELECT EXTRACT(MONTH FROM record_date) AS transaction_month, COUNT(transaction_id) AS transaction_count
--- FROM transactions
--- GROUP BY transaction_month
--- ORDER BY transaction_month;
-
-
 -- SELECT
 --     EXTRACT(YEAR FROM record_date) AS transaction_year,
 --     EXTRACT(MONTH FROM record_date) AS transaction_month,
