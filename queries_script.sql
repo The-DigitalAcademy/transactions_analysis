@@ -27,13 +27,6 @@
 
 
 -- Question 4
--- SELECT c.sex_code, COUNT(t.transaction_id) AS transaction_count, AVG(t.amt) AS avg_transaction_amount
--- FROM transactions t
--- JOIN customers c ON t.customer_identifier = c.customer_identifier
--- GROUP BY c.sex_code;
-
-
--- Question 5
 -- SELECT
 --     EXTRACT(YEAR FROM record_date) AS transaction_year,
 --     EXTRACT(MONTH FROM record_date) AS transaction_month,
@@ -55,16 +48,16 @@
 -- ORDER BY transaction_year, transaction_month;
 
 
+-- Question 5
+-- SELECT i.income_group_desc, AVG(t.amt) AS avg_investment_transaction
+-- FROM transactions t
+-- JOIN customers c ON t.customer_identifier = c.customer_identifier
+-- JOIN income_group i ON c.income_group_code = i.income_group_code
+-- WHERE t.transaction_description LIKE '%INVESTMENT%'
+-- GROUP BY i.income_group_code;
+
+
 -- Question 6
-SELECT i.income_group_desc, AVG(t.amt) AS avg_investment_transaction
-FROM transactions t
-JOIN customers c ON t.customer_identifier = c.customer_identifier
-JOIN income_group i ON c.income_group_code = i.income_group_code
-WHERE t.transaction_description LIKE '%INVESTMENT%'
-GROUP BY i.income_group_code;
-
-
--- Question 7
 -- SELECT i.income_group_desc, c.sex_code, COUNT(t.customer_identifier) AS missed_payments
 -- FROM transactions t
 -- JOIN customers c ON t.customer_identifier = c.customer_identifier
@@ -73,7 +66,7 @@ GROUP BY i.income_group_code;
 -- GROUP BY c.sex_code, i.income_group_desc;
 
 
--- Question 8
+-- Question 7
 -- SELECT ig.income_group_desc,ROUND(AVG(c.age)), COUNT(DISTINCT(t.customer_identifier)) as bad_count
 -- FROM transactions t
 -- JOIN customers c
