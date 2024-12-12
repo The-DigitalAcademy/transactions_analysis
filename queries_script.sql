@@ -40,9 +40,25 @@
 
 
 -- Question 5
--- SELECT t.product_code, SUM(t.amt) as amount_changes
--- FROM transactions t
--- GROUP BY t.product_code
+-- SELECT
+--     EXTRACT(YEAR FROM record_date) AS transaction_year,
+--     EXTRACT(MONTH FROM record_date) AS transaction_month,
+--     product_code  AS account_type, 
+--     SUM(amt) as cash_flow
+-- FROM transactions
+-- WHERE product_code = 'CHEQ'
+-- GROUP BY product_code, transaction_year, transaction_month
+-- ORDER BY transaction_year, transaction_month;
+
+-- SELECT
+--     EXTRACT(YEAR FROM record_date) AS transaction_year,
+--     EXTRACT(MONTH FROM record_date) AS transaction_month,
+--     product_code AS account_type, 
+--     SUM(amt) as cash_flow
+-- FROM transactions
+-- WHERE product_code = 'SAVE'
+-- GROUP BY product_code, transaction_year, transaction_month
+-- ORDER BY transaction_year, transaction_month;
 
 
 -- Question 6
