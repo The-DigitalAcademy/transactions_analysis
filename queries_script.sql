@@ -74,9 +74,12 @@
 
 
 -- Question 8
--- SELECT c.customer_identifier, i.income_group_desc, COUNT(t.transaction_id) AS write_off_count
+-- SELECT ig.income_group_desc,ROUND(AVG(c.age)), COUNT(DISTINCT(t.customer_identifier)) as bad_count
 -- FROM transactions t
--- JOIN customers c ON t.customer_identifier = c.customer_identifier
--- JOIN income_group i ON c.income_group_code = i.income_group_code
--- WHERE t.transaction_description LIKE '%W/OFF%'
--- GROUP BY c.customer_identifier, i.income_group_desc;
+-- JOIN customers c
+-- ON t.customer_identifier = c.customer_identifier
+-- JOIN income_group ig
+-- ON c.income_group_code = ig.income_group_code
+-- WHERE transaction_description = 'BAD DEBT W/OFF' OR transaction_description = 'DC UNPAID' OR transaction_description = 'NAEDO DEBIT ORDER' 
+-- GROUP BY ig.income_group_code
+-- ORDER BY bad_count DESC
