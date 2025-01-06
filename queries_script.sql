@@ -67,15 +67,26 @@
 
 
 -- Question 7
--- SELECT ig.income_group_desc,ROUND(AVG(c.age)), COUNT(DISTINCT(t.customer_identifier)) as bad_count
--- FROM transactions t
--- JOIN customers c
--- ON t.customer_identifier = c.customer_identifier
--- JOIN income_group ig
--- ON c.income_group_code = ig.income_group_code
--- WHERE transaction_description = 'BAD DEBT W/OFF' OR transaction_description = 'DC UNPAID' OR transaction_description = 'NAEDO DEBIT ORDER' 
--- GROUP BY ig.income_group_code
--- ORDER BY bad_count DESC
+-- SELECT 
+--     ig.income_group_desc,
+--     COUNT(DISTINCT t.customer_identifier) AS bad_count
+-- FROM 
+--     transactions t
+-- JOIN 
+--     customers c
+-- ON 
+--     t.customer_identifier = c.customer_identifier
+-- JOIN 
+--     income_group ig
+-- ON 
+--     c.income_group_code = ig.income_group_code
+-- WHERE 
+--     transaction_description IN ('BAD DEBT W/OFF', 'DC UNPAID', 'NAEDO UNPAID', 'ACB DEBIT REVERSAL', 'UNPAID DEBIT') 
+-- GROUP BY 
+--     ig.income_group_desc, ig.income_group_code
+-- ORDER BY 
+--     ig.income_group_code ASC;
+
 
 
 -- Addition: Average account balance of customers missing repayments
@@ -85,4 +96,4 @@
 -- ON t.customer_identifier = c.customer_identifier
 -- JOIN income_group ig
 -- ON c.income_group_code = ig.income_group_code
--- WHERE transaction_description = 'BAD DEBT W/OFF' OR transaction_description = 'DC UNPAID' OR transaction_description = 'NAEDO DEBIT ORDER' 
+-- WHERE transaction_description IN ('BAD DEBT W/OFF', 'DC UNPAID', 'NAEDO UNPAID', 'ACB DEBIT REVERSAL', 'UNPAID DEBIT') 
