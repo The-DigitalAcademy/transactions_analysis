@@ -73,7 +73,7 @@
 -- GROUP BY transaction_description, channel
 -- ORDER BY transaction_count
 
- -- 2.3 
+ -- 2.4 
 -- SELECT
 --     transaction_description,
 --     channel,
