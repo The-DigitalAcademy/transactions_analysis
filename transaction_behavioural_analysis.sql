@@ -8,7 +8,7 @@
 -- FROM transactions t
 -- JOIN customers c ON t.customer_identifier = c.customer_identifier
 
--- WHERE transaction_description IN ('BAD DEBT W/OFF', 'DC UNPAID', 'NAEDO UNPAID', 'ACB DEBIT REVERSAL', 'UNPAID DEBIT')
+-- WHERE transaction_description IN ('BAD DEBT W/OFF', 'DC UNPAID', 'NAEDO DO UNPD', 'ACB DEBIT REVERSAL', 'UNPAID DEBIT')
 -- GROUP BY year_month
 -- ORDER BY year_month ASC;
 
