@@ -50,4 +50,37 @@
 --         WHEN c.age BETWEEN 50 AND 59 THEN '50-59'
 --         ELSE '60 and above'
 --     END AS age_group,
---     COUNT(c.customer_
+--     COUNT(c.customer_identifier) AS Total_Customers,
+--     ROUND(AVG(c.number_of_accounts)) AS Avg_Number_of_Accounts
+-- FROM 
+--     customers c
+-- JOIN 
+--     income_group i
+-- ON 
+--     c.income_group_code = i.income_group_code
+-- GROUP BY 
+--     i.income_group_desc, age_group, i.income_group_code
+-- ORDER BY 
+--     i.income_group_code, age_group;
+
+
+-- -- 4. Identify Top Segments with High Account Usage
+-- -- Focus on customers with the highest number of accounts.
+-- SELECT 
+--     c.customer_identifier,
+--     i.income_group_desc AS Income_Group,
+--     c.age,
+--     c.number_of_accounts
+-- FROM 
+--     customers c
+-- JOIN 
+--     income_group i
+-- ON 
+--     c.income_group_code = i.income_group_code
+-- WHERE 
+--     c.number_of_accounts = (
+--         SELECT MAX(number_of_accounts) FROM customers
+--     )
+-- ORDER BY 
+--     c.number_of_accounts DESC;
+
