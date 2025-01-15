@@ -84,3 +84,82 @@
 -- ORDER BY 
 --     c.number_of_accounts DESC;
 
+
+
+--Customer are catergorised according to their age group/life stage
+-- SELECT 
+--     CASE 
+--         WHEN AGE < 25 THEN '16-24: Youth'
+--         WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--         WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--         WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--         WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--         ELSE '65+: Seniors/Elderly'
+--     END AS age_group_label,
+--     COUNT(*) AS customer_count,
+--     ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS percentage
+-- FROM customers
+-- GROUP BY 
+--     CASE 
+--         WHEN AGE < 25 THEN '16-24: Youth'
+--         WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--         WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--         WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--         WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--         ELSE '65+: Seniors/Elderly'
+--     END
+-- ORDER BY age_group_label;
+
+
+
+--Customer are catergorised according to their age group/life stage and what income group they belong to
+
+--  SELECT 
+--     CASE 
+--         WHEN AGE < 25 THEN '16-24: Youth'
+--         WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--         WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--         WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--         WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--         ELSE '65+: Seniors/Elderly'
+--     END AS age_group_label,
+--     ig.income_group_desc,
+--     COUNT(*) AS customer_count,
+--     ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (PARTITION BY 
+--         CASE 
+--             WHEN AGE < 25 THEN '16-24: Youth'
+--             WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--             WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--             WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--             WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--             ELSE '65+: Seniors/Elderly'
+--         END), 2) AS percentage_within_age_group,
+--     ROUND(COUNT(*) * 100.0 / SUM(COUNT(*)) OVER (), 2) AS percentage_of_total_customers
+-- FROM customers c
+-- JOIN income_group ig 
+--     ON c.income_group_code = ig.income_group_code
+-- GROUP BY 
+--     CASE 
+--         WHEN AGE < 25 THEN '16-24: Youth'
+--         WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--         WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--         WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--         WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--         ELSE '65+: Seniors/Elderly'
+--     END, 
+--     ig.income_group_desc,
+--     ig.income_group_code
+-- ORDER BY 
+--     CASE 
+--         WHEN AGE < 25 THEN '16-24: Youth'
+--         WHEN AGE BETWEEN 25 AND 34 THEN '25-34: Young Professionals'
+--         WHEN AGE BETWEEN 35 AND 44 THEN '35-44: Middle-Aged Adults'
+--         WHEN AGE BETWEEN 45 AND 54 THEN '45-54: Prime Working Years'
+--         WHEN AGE BETWEEN 55 AND 64 THEN '55-64: Pre-Retirement'
+--         ELSE '65+: Seniors/Elderly'
+--     END,
+--     ig.income_group_code;
+
+
+
+
